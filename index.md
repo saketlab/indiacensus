@@ -9,6 +9,15 @@ An R package for accessing digitised Census of India data from 1901 to
 devtools::install_github("saketc/indiacensus")
 ```
 
+## Vignettes
+
+- [Population
+  Growth](https://saketlab.github.io/indiacensus/articles/population-maps.html)
+- [ST Population
+  Distribution](https://saketlab.github.io/indiacensus/articles/st-population.html)
+- [Linguistic
+  Diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.html)
+
 ## Quickstart
 
 ``` r
@@ -63,15 +72,6 @@ list_census_variables(year = 1981)
 # Find worker-related variables
 search_census_variables("worker")
 ```
-
-## Vignettes
-
-- [Population
-  Growth](https://saketkc.github.io/indiacensus/articles/population-maps.html)
-- [ST Population
-  Distribution](https://saketkc.github.io/indiacensus/articles/st-population.html)
-- [Linguistic
-  Diversity](https://saketkc.github.io/indiacensus/articles/linguistic-diversity.html)
 
 ## Data Source
 
