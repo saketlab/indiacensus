@@ -1,4 +1,4 @@
-# Mapping Linguistic Diversity
+# Mapping linguistic diversity
 
 India is one of the most linguistically diverse countries in the world.
 The 2011 Census recorded over 19,500 languages and dialects. This
@@ -98,7 +98,7 @@ map_l2 <- left_join(
 plot_map(
   map_l1,
   fill_var = "effective_languages",
-  title = "Linguistic Diversity: Scheduled Languages (L1)",
+  title = "Linguistic diversity: Scheduled languages (L1)",
   subtitle = "Effective number of languages per district",
   legend_title = "Effective\nLanguages",
   palette = "reds",
@@ -117,7 +117,7 @@ plot_map(
 plot_map(
   map_l2,
   fill_var = "effective_languages",
-  title = "Linguistic Diversity: Dialects (L2)",
+  title = "Linguistic diversity: Dialects (L2)",
   subtitle = "Effective number of dialects per district",
   legend_title = "Effective\nLanguages",
   palette = "reds",
@@ -133,8 +133,8 @@ plot_map(
 ## Most diverse districts
 
 ``` r
-cat("Top 10 by Scheduled Languages (L1):\n")
-#> Top 10 by Scheduled Languages (L1):
+cat("Top 10 by scheduled languages (L1):\n")
+#> Top 10 by scheduled languages (L1):
 diversity_l1 |>
   arrange(desc(effective_languages)) |>
   select(state_name_harmonized, area_name, effective_languages) |>
@@ -153,9 +153,9 @@ diversity_l1 |>
 #>  9 Arunachal Pradesh     Kibithoo                     11.3
 #> 10 Arunachal Pradesh     Changlang                    11.2
 
-cat("\nTop 10 by Dialects (L2):\n")
+cat("\nTop 10 by dialects (L2):\n")
 #> 
-#> Top 10 by Dialects (L2):
+#> Top 10 by dialects (L2):
 diversity_l2 |>
   arrange(desc(effective_languages)) |>
   select(state_name_harmonized, area_name, effective_languages) |>
@@ -174,11 +174,3 @@ diversity_l2 |>
 #>  9 Arunachal Pradesh     Kharsang                            15.3
 #> 10 Arunachal Pradesh     Changlang                           14.7
 ```
-
-## Regional patterns
-
-**L1 diversity** is highest in cosmopolitan cities and Northeast states.
-
-**L2 diversity** reveals hidden variation in the Hindi belt, where
-dialects like Bhojpuri, Maithili, and Marwari are classified under
-“Hindi” at L1.

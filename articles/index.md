@@ -2,9 +2,11 @@
 
 ### All vignettes
 
-- [Mapping Linguistic
-  Diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.md):
+- [Mapping linguistic
+  diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.md):
 - [Population
-  Maps](https://saketlab.github.io/indiacensus/articles/population-maps.md):
-- [Scheduled Tribe population
-  distribution](https://saketlab.github.io/indiacensus/articles/st-population.md):
+  maps](https://saketlab.github.io/indiacensus/articles/population-maps.md):
+- [SC/ST population
+  distribution](https://saketlab.github.io/indiacensus/articles/sc-st-population.md):
+- [Sex ratio
+  evolution](https://saketlab.github.io/indiacensus/articles/sex-ratio.md):

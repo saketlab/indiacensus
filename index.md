@@ -12,11 +12,13 @@ devtools::install_github("saketc/indiacensus")
 ## Vignettes
 
 - [Population
-  Growth](https://saketlab.github.io/indiacensus/articles/population-maps.html)
-- [ST Population
-  Distribution](https://saketlab.github.io/indiacensus/articles/st-population.html)
+  growth](https://saketlab.github.io/indiacensus/articles/population-maps.html)
+- [Sex ratio
+  evolution](https://saketlab.github.io/indiacensus/articles/sex-ratio.html)
+- [SC/ST population
+  distribution](https://saketlab.github.io/indiacensus/articles/sc-st-population.html)
 - [Linguistic
-  Diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.html)
+  diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.html)
 
 ## Quickstart
 

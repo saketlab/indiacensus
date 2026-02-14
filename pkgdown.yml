@@ -4,8 +4,9 @@ pkgdown_sha: ~
 articles:
   linguistic-diversity: linguistic-diversity.html
   population-maps: population-maps.html
-  st-population: st-population.html
-last_built: 2026-02-14T18:11Z
+  sc-st-population: sc-st-population.html
+  sex-ratio: sex-ratio.html
+last_built: 2026-02-14T19:04Z
 urls:
   reference: https://saketlab.github.io/indiacensus/reference
   article: https://saketlab.github.io/indiacensus/articles

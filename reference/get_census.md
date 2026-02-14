@@ -56,21 +56,21 @@ A tibble (or sf object if geometry = TRUE).
 ``` r
 get_census(2011, "state")
 #> # A tibble: 32 × 12
-#>     year geography state_code state_name   district_code name  population  males
-#>    <int> <chr>          <int> <chr>                <int> <chr>      <dbl>  <dbl>
-#>  1  2011 state              1 JAMMU&KASHM…             0 JAMM…   12541302 6.64e6
-#>  2  2011 state              2 HIMACHAL PR…             0 HIMA…    6864602 3.48e6
-#>  3  2011 state              3 PUNJAB                   0 PUNJ…   27743338 1.46e7
-#>  4  2011 state              4 CHANDIGARH               0 CHAN…    1055450 5.81e5
-#>  5  2011 state              5 UTTARAKHAND              0 UTTA…   10086292 5.14e6
-#>  6  2011 state              6 HARYANA                  0 HARY…   25351462 1.35e7
-#>  7  2011 state              7 NCT OF DELHI             0 NCT …   16787941 8.99e6
-#>  8  2011 state              8 RAJASTHAN                0 RAJA…   68548437 3.56e7
-#>  9  2011 state              9 UTTAR PRADE…             0 UTTA…  199812341 1.04e8
-#> 10  2011 state             10 BIHAR                    0 BIHAR  104099452 5.43e7
+#>     year geography state_code state_name     state_name_harmonized district_code
+#>    <int> <chr>          <int> <chr>          <chr>                         <int>
+#>  1  2011 state              1 JAMMU&KASHMIR  Jammu & Kashmir                   0
+#>  2  2011 state              2 HIMACHAL PRAD… Himachal Pradesh                  0
+#>  3  2011 state              3 PUNJAB         Punjab                            0
+#>  4  2011 state              4 CHANDIGARH     Chandigarh                        0
+#>  5  2011 state              5 UTTARAKHAND    Uttarakhand                       0
+#>  6  2011 state              6 HARYANA        Haryana                           0
+#>  7  2011 state              7 NCT OF DELHI   Nct Of Delhi                      0
+#>  8  2011 state              8 RAJASTHAN      Rajasthan                         0
+#>  9  2011 state              9 UTTAR PRADESH  Uttar Pradesh                     0
+#> 10  2011 state             10 BIHAR          Bihar                             0
 #> # ℹ 22 more rows
-#> # ℹ 4 more variables: females <dbl>, variation_absolute <dbl>,
-#> #   variation_percent <dbl>, state_name_harmonized <chr>
+#> # ℹ 6 more variables: name <chr>, population <dbl>, males <dbl>, females <dbl>,
+#> #   variation_absolute <dbl>, variation_percent <dbl>
 get_census(1971, "district", state = "Maharashtra")
 #> # A tibble: 26 × 21
 #>     year geography state       name         area_km2 population population_rural
@@ -92,12 +92,12 @@ get_census(1971, "district", state = "Maharashtra")
 #> #   st_population <dbl>, st_population_rural <dbl>, st_population_urban <dbl>,
 #> #   state_name_harmonized <chr>
 get_census(1981, "district", variables = c("population", "literacy_rate"), geometry = TRUE)
-#> Simple feature collection with 396 features and 8 fields (with 26 geometries empty)
+#> Simple feature collection with 398 features and 8 fields (with 26 geometries empty)
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 68.43074 ymin: 8.066995 xmax: 97.35811 ymax: 33.08975
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 396 × 9
+#> # A tibble: 398 × 9
 #>     year state        district geo_id geo_name level population literate_persons
 #>    <int> <chr>        <chr>    <chr>  <chr>    <chr>      <dbl>            <dbl>
 #>  1  1981 ANDHRA PRAD… Srikaku… IN_AN… Srikaku… dist…    1959352           445209
@@ -110,6 +110,6 @@ get_census(1981, "district", variables = c("population", "literacy_rate"), geome
 #>  8  1981 ANDHRA PRAD… Prakasam IN_AN… Prakasam dist…    2329571           684667
 #>  9  1981 ANDHRA PRAD… Nellore  IN_AN… Nellore  dist…    2014879           648006
 #> 10  1981 ANDHRA PRAD… Chittoor IN_AN… Chittoor dist…    2737316           871844
-#> # ℹ 386 more rows
+#> # ℹ 388 more rows
 #> # ℹ 1 more variable: geometry <MULTIPOLYGON [°]>
 ```

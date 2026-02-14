@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Mapping Linguistic Diversity • indiacensus</title>
+<title>Mapping linguistic diversity • indiacensus</title>
 <script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Mapping Linguistic Diversity">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Mapping linguistic diversity">
 <meta name="keywords" content="India Census, R package, census data, demographics, population, districts, states, 1901-2011, choropleth maps, spatial analysis, India statistics">
 <meta name="author" content="Saket Choudhary">
 <meta name="robots" content="index, follow">
@@ -72,8 +72,9 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/population-maps.html">Population growth</a></li>
-    <li><a class="dropdown-item" href="../articles/st-population.html">ST Population Distribution</a></li>
-    <li><a class="dropdown-item" href="../articles/linguistic-diversity.html">Linguistic Diversity</a></li>
+    <li><a class="dropdown-item" href="../articles/sex-ratio.html">Sex ratio evolution</a></li>
+    <li><a class="dropdown-item" href="../articles/sc-st-population.html">SC/ST population distribution</a></li>
+    <li><a class="dropdown-item" href="../articles/linguistic-diversity.html">Linguistic diversity</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -104,7 +105,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>Mapping Linguistic Diversity</h1>
+      <h1>Mapping linguistic diversity</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/saketlab/indiacensus/blob/master/vignettes/linguistic-diversity.Rmd" class="external-link"><code>vignettes/linguistic-diversity.Rmd</code></a></small>
@@ -214,7 +215,7 @@ has diversity equivalent to four equally-spoken languages.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
 <span>  <span class="va">map_l1</span>,</span>
 <span>  fill_var <span class="op">=</span> <span class="st">"effective_languages"</span>,</span>
-<span>  title <span class="op">=</span> <span class="st">"Linguistic Diversity: Scheduled Languages (L1)"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Linguistic diversity: Scheduled languages (L1)"</span>,</span>
 <span>  subtitle <span class="op">=</span> <span class="st">"Effective number of languages per district"</span>,</span>
 <span>  legend_title <span class="op">=</span> <span class="st">"Effective\nLanguages"</span>,</span>
 <span>  palette <span class="op">=</span> <span class="st">"reds"</span>,</span>
@@ -223,7 +224,7 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span>  limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">18</span><span class="op">)</span>,</span>
 <span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">16</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="linguistic-diversity_files/figure-html/plot-l1-1.png" class="r-plt" alt="" width="960"></p>
+<p><img src="linguistic-diversity_files/figure-html/plot-l1-1.png" class="r-plt" alt="" width="1500"></p>
 </div>
 <div class="section level2">
 <h2 id="l2-dialect-level-diversity">L2: Dialect-level diversity<a class="anchor" aria-label="anchor" href="#l2-dialect-level-diversity"></a>
@@ -232,7 +233,7 @@ has diversity equivalent to four equally-spoken languages.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
 <span>  <span class="va">map_l2</span>,</span>
 <span>  fill_var <span class="op">=</span> <span class="st">"effective_languages"</span>,</span>
-<span>  title <span class="op">=</span> <span class="st">"Linguistic Diversity: Dialects (L2)"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Linguistic diversity: Dialects (L2)"</span>,</span>
 <span>  subtitle <span class="op">=</span> <span class="st">"Effective number of dialects per district"</span>,</span>
 <span>  legend_title <span class="op">=</span> <span class="st">"Effective\nLanguages"</span>,</span>
 <span>  palette <span class="op">=</span> <span class="st">"reds"</span>,</span>
@@ -241,14 +242,14 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span>  limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">35</span><span class="op">)</span>,</span>
 <span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">16</span>, <span class="fl">32</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="linguistic-diversity_files/figure-html/plot-l2-1.png" class="r-plt" alt="" width="960"></p>
+<p><img src="linguistic-diversity_files/figure-html/plot-l2-1.png" class="r-plt" alt="" width="1500"></p>
 </div>
 <div class="section level2">
 <h2 id="most-diverse-districts">Most diverse districts<a class="anchor" aria-label="anchor" href="#most-diverse-districts"></a>
 </h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Top 10 by Scheduled Languages (L1):\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Top 10 by Scheduled Languages (L1):</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Top 10 by scheduled languages (L1):\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Top 10 by scheduled languages (L1):</span></span>
 <span><span class="va">diversity_l1</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">effective_languages</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">area_name</span>, <span class="va">effective_languages</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -267,9 +268,9 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Arunachal Pradesh     Kibithoo                     11.3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Arunachal Pradesh     Changlang                    11.2</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nTop 10 by Dialects (L2):\n"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"\nTop 10 by dialects (L2):\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Top 10 by Dialects (L2):</span></span>
+<span><span class="co">#&gt; Top 10 by dialects (L2):</span></span>
 <span><span class="va">diversity_l2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">effective_languages</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">area_name</span>, <span class="va">effective_languages</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -287,15 +288,6 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Nagaland              Dimapur Sadar                       15.9</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Arunachal Pradesh     Kharsang                            15.3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Arunachal Pradesh     Changlang                           14.7</span></span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="regional-patterns">Regional patterns<a class="anchor" aria-label="anchor" href="#regional-patterns"></a>
-</h2>
-<p><strong>L1 diversity</strong> is highest in cosmopolitan cities and
-Northeast states.</p>
-<p><strong>L2 diversity</strong> reveals hidden variation in the Hindi
-belt, where dialects like Bhojpuri, Maithili, and Marwari are classified
-under “Hindi” at L1.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

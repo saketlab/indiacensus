@@ -1,4 +1,4 @@
-# Population Maps
+# Population maps
 
 ``` r
 library(indiacensus)
@@ -14,7 +14,7 @@ library(dplyr)
 library(ggplot2)
 ```
 
-## State Population Over Time
+## State population
 
 ``` r
 years <- c(1941, 1951, 1961, 1971, 1981, 1991, 2001, 2011)
@@ -37,7 +37,7 @@ ggplot(pop_geo) +
 
 ![](population-maps_files/figure-html/facet-map-1.png)
 
-## Decadal Growth Rate
+## Decadal growth rate
 
 ``` r
 growth_years <- c(1951, 1961, 1971, 1981, 1991, 2001, 2011)
