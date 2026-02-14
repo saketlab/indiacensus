@@ -1,0 +1,11 @@
+pandoc: 3.1.11
+pkgdown: 2.2.0
+pkgdown_sha: ~
+articles:
+  linguistic-diversity: linguistic-diversity.html
+  population-maps: population-maps.html
+  st-population: st-population.html
+last_built: 2026-02-14T17:37Z
+urls:
+  reference: https://saketlab.github.io/indiacensus/reference
+  article: https://saketlab.github.io/indiacensus/articles

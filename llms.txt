@@ -1,0 +1,161 @@
+# indiacensus
+
+An R package for accessing digitised Census of India data from 1901 to
+2011.
+
+## Installation
+
+``` r
+devtools::install_github("saketc/indiacensus")
+```
+
+## Quickstart
+
+``` r
+library(indiacensus)
+
+# Get state-level population for 2011
+get_census(2011, "state")
+
+# Get district population for Maharashtra in 1971
+get_census(1971, "district", state = "Maharashtra")
+
+# Get data with geographic boundaries for mapping
+get_census(1971, "district", state = "MH", geometry = TRUE)
+
+# Browse available variables
+list_census_variables()
+
+# Search for specific variables
+search_census_variables("literacy")
+
+# See what data is available for each year
+list_census_geographies()
+```
+
+## Examples
+
+``` r
+# State populations over time (1901-2011)
+pop <- get_census(2011, "state")
+
+library(ggplot2)
+
+# Get 1971 district data for Maharashtra with boundaries
+mh <- get_census(1971, "district", state = "Maharashtra", geometry = TRUE)
+
+# Create a choropleth map
+ggplot(mh) +
+  geom_sf(aes(fill = population)) +
+  scale_fill_viridis_c() +
+  theme_minimal() +
+  labs(title = "Population by District - Maharashtra 1971")
+
+# What years and geographies are available?
+list_census_geographies()
+
+# What variables exist?
+list_census_variables()
+
+# Variables available for 1981
+list_census_variables(year = 1981)
+
+# Find worker-related variables
+search_census_variables("worker")
+```
+
+## Data Source
+
+Most datasets in this package are derived from:
+
+> Jolad, Shivakumar and Singh, Madhav (2026). “Indian Census Data
+> Collection, 1901-2026: Digitised Subnational Population and
+> Administrative Datasets.” Harvard Dataverse.
+> <https://doi.org/10.7910/DVN/ON8CP8>
+
+The 2011 mother tongue data is derived from the census of india official
+website.
+
+## License
+
+MIT
+
+# Package index
+
+## Census Datasets
+
+Pre-loaded census data
+
+- [`census_1961_literacy`](https://saketlab.github.io/indiacensus/reference/census_1961_literacy.md)
+  : Census 1961 literacy data
+- [`census_1971`](https://saketlab.github.io/indiacensus/reference/census_1971.md)
+  : Census 1971 Primary Census Abstract
+- [`census_1981`](https://saketlab.github.io/indiacensus/reference/census_1981.md)
+  : Census 1981 Primary Census Abstract
+- [`census_2011_pca`](https://saketlab.github.io/indiacensus/reference/census_2011_pca.md)
+  : Census 2011 Primary Census Abstract (PCA)
+- [`census_2011_mother_tongue`](https://saketlab.github.io/indiacensus/reference/census_2011_mother_tongue.md)
+  : Census 2011 Mother Tongue Data (C-16)
+- [`census_population_time_series`](https://saketlab.github.io/indiacensus/reference/census_population_time_series.md)
+  : Census population time series (1901-2011)
+- [`census_subdistricts_2011`](https://saketlab.github.io/indiacensus/reference/census_subdistricts_2011.md)
+  : Subdistrict Directory with 2011 Census Data
+- [`census_variables`](https://saketlab.github.io/indiacensus/reference/census_variables.md)
+  : Census Variables Lookup
+- [`india_states`](https://saketlab.github.io/indiacensus/reference/india_states.md)
+  : Indian States Lookup
+
+## Census Data Access
+
+Retrieve census datasets programmatically
+
+- [`get_census()`](https://saketlab.github.io/indiacensus/reference/get_census.md)
+  : Get India Census Data
+
+## Geographic Boundaries
+
+Work with administrative boundaries
+
+- [`get_census_boundaries()`](https://saketlab.github.io/indiacensus/reference/get_census_boundaries.md)
+  : Get census boundaries
+- [`attach_geometry()`](https://saketlab.github.io/indiacensus/reference/attach_geometry.md)
+  : Attach geographic boundaries to census data
+- [`clear_geometry_cache()`](https://saketlab.github.io/indiacensus/reference/clear_geometry_cache.md)
+  : Clear geometry cache
+
+## Mapping & Visualization
+
+Create choropleth maps
+
+- [`plotting`](https://saketlab.github.io/indiacensus/reference/plotting.md)
+  : Plotting functions for census data
+- [`plot_map()`](https://saketlab.github.io/indiacensus/reference/plot_map.md)
+  : Creates a choropleth map from census data with sensible defaults.
+- [`compare_maps()`](https://saketlab.github.io/indiacensus/reference/compare_maps.md)
+  : Compare maps across years
+- [`get_palette()`](https://saketlab.github.io/indiacensus/reference/get_palette.md)
+  : Get color palette
+
+## Variable Discovery
+
+Explore available census variables
+
+- [`list_census_variables()`](https://saketlab.github.io/indiacensus/reference/list_census_variables.md)
+  : List census variables
+- [`list_census_geographies()`](https://saketlab.github.io/indiacensus/reference/list_census_geographies.md)
+  : List Available Census Geographies
+- [`list_states()`](https://saketlab.github.io/indiacensus/reference/list_states.md)
+  : List Indian states
+- [`search_census_variables()`](https://saketlab.github.io/indiacensus/reference/search_census_variables.md)
+  : Search census variables
+
+# Articles
+
+### All vignettes
+
+- [Mapping Linguistic
+  Diversity](https://saketlab.github.io/indiacensus/articles/linguistic-diversity.md):
+- [Population
+  Maps](https://saketlab.github.io/indiacensus/articles/population-maps.md):
+- [Scheduled Tribe population
+  distribution](https://saketlab.github.io/indiacensus/articles/st-population.md):
