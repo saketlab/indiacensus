@@ -166,6 +166,7 @@ ggplot(scatter_data, aes(sc_pct, st_pct)) +
     na.rm = TRUE
   ) +
   scale_color_manual(values = c("grey50", "red"), guide = "none") +
+  coord_fixed(ratio = 1) +
   labs(
     x = "SC population (%)",
     y = "ST population (%)",
