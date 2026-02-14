@@ -25,7 +25,7 @@ library(ggplot2)
 ## State Population Over Time
 
 ```{r data}
-years <- seq(1901, 2011, by = 10)
+years <- c(1941, 1951, 1961, 1971, 1981, 1991, 2001, 2011)
 
 pop_geo <- lapply(years, function(y) {
   census_population_time_series |>
@@ -46,6 +46,8 @@ ggplot(pop_geo) +
 ## Decadal Growth Rate
 
 ```{r growth}
+growth_years <- c(1951, 1961, 1971, 1981, 1991, 2001, 2011)
+
 pop <- census_population_time_series |>
   filter(geography == "state") |>
   arrange(state_name, year)
@@ -53,10 +55,10 @@ pop <- census_population_time_series |>
 growth <- pop |>
   group_by(state_name) |>
   mutate(growth_rate = 100 * (population - lag(population)) / lag(population)) |>
-  filter(!is.na(growth_rate)) |>
+  filter(!is.na(growth_rate), year %in% growth_years) |>
   ungroup()
 
-growth_geo <- lapply(unique(growth$year), function(y) {
+growth_geo <- lapply(growth_years, function(y) {
   growth |>
     filter(year == y) |>
     attach_geometry(year = y, geography = "state")
