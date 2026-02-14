@@ -1,0 +1,24 @@
+# R build artifacts
+/doc/
+/docs/
+/Meta/
+
+# R history and user files
+.Rhistory
+.Rdata
+.RData
+.Ruserdata
+.Rproj.user
+
+# Package build
+*.tar.gz
+*.Rcheck/
+
+# IDE
+.vscode/
+*.swp
+*~
+
+# OS files
+.DS_Store
+Thumbs.db

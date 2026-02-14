@@ -1,0 +1,73 @@
+---
+title: "Population Maps"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Population Maps}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 10,
+  fig.height = 6
+)
+```
+
+```{r load}
+library(indiacensus)
+library(dplyr)
+library(ggplot2)
+```
+
+## State Population Over Time
+
+```{r data}
+years <- seq(1901, 2011, by = 10)
+
+pop_geo <- lapply(years, function(y) {
+  census_population_time_series |>
+    filter(geography == "state", year == y) |>
+    attach_geometry(year = y, geography = "state")
+}) |> bind_rows()
+```
+
+```{r facet-map}
+ggplot(pop_geo) +
+  geom_sf(aes(fill = population / 1e6), color = "white", linewidth = 0.1) +
+  scale_fill_gradientn(colors = get_palette("viridis"), name = "Million") +
+  facet_wrap(~year, nrow = 2) +
+  theme_void() +
+  theme(strip.text = element_text(face = "bold"), legend.position = "bottom")
+```
+
+## Decadal Growth Rate
+
+```{r growth}
+pop <- census_population_time_series |>
+  filter(geography == "state") |>
+  arrange(state_name, year)
+
+growth <- pop |>
+  group_by(state_name) |>
+  mutate(growth_rate = 100 * (population - lag(population)) / lag(population)) |>
+  filter(!is.na(growth_rate)) |>
+  ungroup()
+
+growth_geo <- lapply(unique(growth$year), function(y) {
+  growth |>
+    filter(year == y) |>
+    attach_geometry(year = y, geography = "state")
+}) |> bind_rows()
+```
+
+```{r growth-map}
+ggplot(growth_geo) +
+  geom_sf(aes(fill = growth_rate), color = "white", linewidth = 0.1) +
+  scale_fill_gradientn(colors = get_palette("blue_red"), name = "Growth %", limits = c(-10, 50)) +
+  facet_wrap(~year, nrow = 2) +
+  theme_void() +
+  theme(strip.text = element_text(face = "bold"), legend.position = "bottom")
+```

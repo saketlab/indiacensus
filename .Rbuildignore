@@ -1,0 +1,22 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^\.claude$
+^CLAUDE\.md$
+^LICENSE\.md$
+^README\.Rmd$
+^cran-comments\.md$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+# Exclude raw data files (Excel, PDF) from the package
+^data/.*\.xlsx$
+^data/.*\.pdf$
+^data/.*\.zip$
+^data/1901-2011$
+^data/1961$
+^data/1971$
+^data/1981$
+^data/2026$
+^doc$
+^Meta$

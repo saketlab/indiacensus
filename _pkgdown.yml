@@ -1,0 +1,147 @@
+url: https://saketlab.github.io/indiacensus/
+
+development:
+  mode: auto
+
+template:
+  bootstrap: 5
+  light-switch: true
+  preset: default
+  bslib:
+    primary: "#0071e3"
+    border-radius: "0.5rem"
+  includes:
+    in_header: |
+      <meta name="keywords" content="India Census, R package, census data, demographics, population, districts, states, 1901-2011, choropleth maps, spatial analysis, India statistics">
+      <meta name="author" content="Saket Choudhary">
+      <meta name="robots" content="index, follow">
+      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+      <link rel="canonical" href="https://saketlab.github.io/indiacensus/">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://saketlab.github.io/indiacensus/">
+      <meta property="og:title" content="indiacensus - India Census Data for R">
+      <meta property="og:description" content="R package for accessing digitised India Census data from 1901-2011. Includes population time series, administrative boundaries, and tools for choropleth mapping.">
+      <meta property="og:site_name" content="indiacensus">
+      <meta property="og:locale" content="en_US">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="indiacensus - India Census Data for R">
+      <meta name="twitter:description" content="R package for accessing digitised India Census data from 1901-2011.">
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "indiacensus",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows, macOS, Linux",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "R package for accessing digitised India Census data from 1901-2011 including population time series, administrative boundaries, and choropleth mapping tools",
+        "author": {
+          "@type": "Person",
+          "name": "Saket Choudhary",
+          "url": "https://saketlab.org"
+        },
+        "url": "https://saketlab.github.io/indiacensus/",
+        "downloadUrl": "https://github.com/saketlab/indiacensus",
+        "softwareVersion": "0.1.0",
+        "programmingLanguage": "R"
+      }
+      </script>
+
+home:
+  title: "indiacensus - India Census Data for R"
+  description: >
+    R package for accessing digitised India Census data from 1901-2011 including
+    population time series, administrative boundaries, and tools for choropleth mapping.
+
+  links:
+  - text: Browse source code
+    href: https://github.com/saketlab/indiacensus
+  - text: Report a bug
+    href: https://github.com/saketlab/indiacensus/issues
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, github, lightswitch]
+
+  components:
+    reference:
+      text: Reference
+      href: reference/index.html
+
+    articles:
+      text: Articles
+      menu:
+      - text: Population growth
+        href: articles/population-maps.html
+      - text: ST Population Distribution
+        href: articles/st-population.html
+      - text: Linguistic Diversity
+        href: articles/linguistic-diversity.html
+
+    news:
+      text: Changelog
+      href: news/index.html
+
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/saketlab/indiacensus
+      aria-label: GitHub
+
+reference:
+- title: "Census Datasets"
+  desc: "Pre-loaded census data"
+  contents:
+  - census_1961_literacy
+  - census_1971
+  - census_1981
+  - census_2011_pca
+  - census_2011_mother_tongue
+  - census_population_time_series
+  - census_subdistricts_2011
+  - census_variables
+  - india_states
+
+- title: "Census Data Access"
+  desc: "Retrieve census datasets programmatically"
+  contents:
+  - get_census
+
+- title: "Geographic Boundaries"
+  desc: "Work with administrative boundaries"
+  contents:
+  - get_census_boundaries
+  - attach_geometry
+  - clear_geometry_cache
+
+- title: "Mapping & Visualization"
+  desc: "Create choropleth maps"
+  contents:
+  - plotting
+  - plot_map
+  - compare_maps
+  - get_palette
+
+- title: "Variable Discovery"
+  desc: "Explore available census variables"
+  contents:
+  - list_census_variables
+  - list_census_geographies
+  - list_states
+  - search_census_variables
+
+authors:
+  Saket Choudhary:
+    href: https://github.com/saketkc
+
+footer:
+  structure:
+    left: developed_by
+    right: built_with
+  components:
+    developed_by: "Developed by [Saket Lab](https://saketlab.org)"
+    built_with: "Built with [pkgdown](https://pkgdown.r-lib.org/)"
