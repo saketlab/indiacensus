@@ -1,8 +1,10 @@
 ---
-title: "Population Maps"
-output: rmarkdown::html_vignette
+title: "Population maps"
+output:
+  rmarkdown::html_vignette:
+    self_contained: true
 vignette: >
-  %\VignetteIndexEntry{Population Maps}
+  %\VignetteIndexEntry{Population maps}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,7 +14,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.width = 10,
-  fig.height = 6
+  fig.height = 6,
+  dev = "png",
+  dpi = 150
 )
 ```
 
@@ -22,7 +26,7 @@ library(dplyr)
 library(ggplot2)
 ```
 
-## State Population Over Time
+## State population
 
 ```{r data}
 years <- c(1941, 1951, 1961, 1971, 1981, 1991, 2001, 2011)
@@ -43,7 +47,7 @@ ggplot(pop_geo) +
   theme(strip.text = element_text(face = "bold"), legend.position = "bottom")
 ```
 
-## Decadal Growth Rate
+## Decadal growth rate
 
 ```{r growth}
 growth_years <- c(1951, 1961, 1971, 1981, 1991, 2001, 2011)

@@ -25,15 +25,15 @@ A tibble with 7,074 rows and 15 columns:
 }
 }
 \source{
-Jolad and Singh (2026), "Indian Census Data Collection, 1901-2026:
-Digitised Subnational Population and Administrative Datasets",
-Harvard Dataverse, \doi{10.7910/DVN/ON8CP8}.
+Jolad, Shivakumar and Singh, Madhav (2026). "Indian Census Data
+Collection, 1901-2026: Digitised Subnational Population and Administrative
+Datasets." Harvard Dataverse. \doi{10.7910/DVN/ON8CP8}.
 }
 \usage{
 census_subdistricts_2011
 }
 \description{
 Administrative subdistrict (tehsil/taluka) level data linked to 2011 Census
-population figures. Based on 2026 administrative boundaries.
+population figures. Based on 2011 administrative boundaries.
 }
 \keyword{datasets}

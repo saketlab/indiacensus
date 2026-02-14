@@ -1,8 +1,10 @@
 ---
-title: "Mapping Linguistic Diversity"
-output: rmarkdown::html_vignette
+title: "Mapping linguistic diversity"
+output:
+  rmarkdown::html_vignette:
+    self_contained: true
 vignette: >
-  %\VignetteIndexEntry{Mapping Linguistic Diversity}
+  %\VignetteIndexEntry{Mapping linguistic diversity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,7 +16,9 @@ knitr::opts_chunk$set(
   fig.width = 8,
   fig.height = 10,
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  dev = "png",
+  dpi = 150
 )
 ```
 
@@ -99,7 +103,7 @@ map_l2 <- left_join(
 plot_map(
   map_l1,
   fill_var = "effective_languages",
-  title = "Linguistic Diversity: Scheduled Languages (L1)",
+  title = "Linguistic diversity: Scheduled languages (L1)",
   subtitle = "Effective number of languages per district",
   legend_title = "Effective\nLanguages",
   palette = "reds",
@@ -116,7 +120,7 @@ plot_map(
 plot_map(
   map_l2,
   fill_var = "effective_languages",
-  title = "Linguistic Diversity: Dialects (L2)",
+  title = "Linguistic diversity: Dialects (L2)",
   subtitle = "Effective number of dialects per district",
   legend_title = "Effective\nLanguages",
   palette = "reds",
@@ -130,21 +134,15 @@ plot_map(
 ## Most diverse districts
 
 ```{r compare-levels}
-cat("Top 10 by Scheduled Languages (L1):\n")
+cat("Top 10 by scheduled languages (L1):\n")
 diversity_l1 |>
   arrange(desc(effective_languages)) |>
   select(state_name_harmonized, area_name, effective_languages) |>
   head(10)
 
-cat("\nTop 10 by Dialects (L2):\n")
+cat("\nTop 10 by dialects (L2):\n")
 diversity_l2 |>
   arrange(desc(effective_languages)) |>
   select(state_name_harmonized, area_name, effective_languages) |>
   head(10)
 ```
-
-## Regional patterns
-
-**L1 diversity** is highest in cosmopolitan cities and Northeast states.
-
-**L2 diversity** reveals hidden variation in the Hindi belt, where dialects like Bhojpuri, Maithili, and Marwari are classified under "Hindi" at L1.

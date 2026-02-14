@@ -4,9 +4,9 @@
 \name{indiacensus-package}
 \alias{indiacensus}
 \alias{indiacensus-package}
-\title{indiacensus: Access India Census Data}
+\title{indiacensus: Package to access census of India across the years}
 \description{
-Provides easy access to digitised Census of India data from 1901 to 2011. Includes population time series, primary census abstracts at state and district levels, and administrative directories. Supports retrieval of census variables with optional geographic boundaries for mapping. Inspired by the tidycensus package for US Census data.
+Provides easy access to digitised Census of India data from 1901 to 2011. Includes population time series, primary census abstracts at state and district levels, and administrative directories. Supports retrieval of census variables with optional geographic boundaries for mapping.
 }
 \seealso{
 Useful links:

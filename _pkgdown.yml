@@ -78,9 +78,11 @@ navbar:
       menu:
       - text: Population growth
         href: articles/population-maps.html
-      - text: ST Population Distribution
-        href: articles/st-population.html
-      - text: Linguistic Diversity
+      - text: Sex ratio evolution
+        href: articles/sex-ratio.html
+      - text: SC/ST population distribution
+        href: articles/sc-st-population.html
+      - text: Linguistic diversity
         href: articles/linguistic-diversity.html
 
     news:

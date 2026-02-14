@@ -24,9 +24,11 @@ Imports:
 Suggests:
     ggplot2,
     gganimate,
+    ggrepel,
     gifski,
     patchwork,
     scales,
+    tidyr,
     testthat (>= 3.0.0),
     knitr,
     rmarkdown

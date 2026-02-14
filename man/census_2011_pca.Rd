@@ -29,9 +29,9 @@ A tibble with 593 rows and 19 columns:
 }
 }
 \source{
-Jolad and Singh (2026), "Indian Census Data Collection, 1901-2026:
-Digitised Subnational Population and Administrative Datasets",
-Harvard Dataverse, \doi{10.7910/DVN/ON8CP8}.
+Jolad, Shivakumar and Singh, Madhav (2026). "Indian Census Data
+Collection, 1901-2026: Digitised Subnational Population and Administrative
+Datasets." Harvard Dataverse. \doi{10.7910/DVN/ON8CP8}.
 }
 \usage{
 census_2011_pca
