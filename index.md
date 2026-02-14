@@ -64,6 +64,15 @@ list_census_variables(year = 1981)
 search_census_variables("worker")
 ```
 
+## Vignettes
+
+- [Population
+  Growth](https://saketkc.github.io/indiacensus/articles/population-maps.html)
+- [ST Population
+  Distribution](https://saketkc.github.io/indiacensus/articles/st-population.html)
+- [Linguistic
+  Diversity](https://saketkc.github.io/indiacensus/articles/linguistic-diversity.html)
+
 ## Data Source
 
 Most datasets in this package are derived from:
