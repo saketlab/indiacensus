@@ -87,8 +87,12 @@ extremes_2011 <- state_trends |>
   filter(year == 2011) |>
   arrange(sex_ratio)
 
-bottom_5 <- extremes_2011 |> head(5) |> pull(state_name_harmonized)
-top_5 <- extremes_2011 |> tail(5) |> pull(state_name_harmonized)
+bottom_5 <- extremes_2011 |>
+  slice_head(n = 5) |>
+  pull(state_name_harmonized)
+top_5 <- extremes_2011 |>
+  slice_tail(n = 5) |>
+  pull(state_name_harmonized)
 
 # Color palette: blues/teals for high ratios (positive), reds/oranges for low (concerning)
 state_colors <- c(
@@ -144,7 +148,7 @@ tail(pop_2011 |> select(state_name_harmonized, sex_ratio), 5)
 change_data <- census_population_time_series |>
   filter(geography == "state", year %in% c(1961, 2011)) |>
   mutate(sex_ratio = 1000 * females / males) |>
-  select(state_name, state_name_harmonized, year, sex_ratio) |>
+  select(state_name_harmonized, state_name_harmonized, year, sex_ratio) |>
   tidyr::pivot_wider(names_from = year, values_from = sex_ratio, names_prefix = "y") |>
   mutate(change = y2011 - y1961) |>
   attach_geometry(year = 2011, geography = "state")

@@ -127,10 +127,16 @@ state_summary <- census_2011_pca |>
   arrange(desc(sc_pct + st_pct))
 
 cat("States with highest SC population %:\n")
-state_summary |> arrange(desc(sc_pct)) |> select(state_name_harmonized, sc_pct) |> head(5)
+state_summary |>
+  arrange(desc(sc_pct)) |>
+  select(state_name_harmonized, sc_pct) |>
+  head(5)
 
 cat("\nStates with highest ST population %:\n")
-state_summary |> arrange(desc(st_pct)) |> select(state_name_harmonized, st_pct) |> head(5)
+state_summary |>
+  arrange(desc(st_pct)) |>
+  select(state_name_harmonized, st_pct) |>
+  head(5)
 ```
 
 ## SC vs ST scatter plot
@@ -139,7 +145,7 @@ state_summary |> arrange(desc(st_pct)) |> select(state_name_harmonized, st_pct) 
 scatter_data <- sf::st_drop_geometry(sc_st_2011) |>
   mutate(
     is_extreme = sc_pct > quantile(sc_pct, 0.95, na.rm = TRUE) |
-                 st_pct > quantile(st_pct, 0.95, na.rm = TRUE),
+      st_pct > quantile(st_pct, 0.95, na.rm = TRUE),
     label = ifelse(is_extreme, name, NA)
   )
 
