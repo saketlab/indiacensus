@@ -76,12 +76,16 @@ navbar:
     articles:
       text: Articles
       menu:
-      - text: Population growth
+      - text: Population maps
         href: articles/population-maps.html
+      - text: Population dynamics
+        href: articles/population-dynamics.html
       - text: Sex ratio evolution
         href: articles/sex-ratio.html
       - text: SC/ST population distribution
         href: articles/sc-st-population.html
+      - text: Social composition
+        href: articles/social-composition.html
       - text: Linguistic diversity
         href: articles/linguistic-diversity.html
 

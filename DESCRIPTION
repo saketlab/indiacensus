@@ -25,6 +25,8 @@ Suggests:
     ggplot2,
     gganimate,
     ggrepel,
+    ggridges,
+    ggtern,
     gifski,
     patchwork,
     scales,
