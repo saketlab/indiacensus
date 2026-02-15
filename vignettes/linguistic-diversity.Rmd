@@ -86,20 +86,22 @@ prepare_diversity <- function(div_data) {
 
 map_l1 <- left_join(
   districts_sf,
-  prepare_diversity(diversity_l1) |> select(state_name_harmonized, district_key, effective_languages),
+  prepare_diversity(diversity_l1) |> select(state_name_harmonized, district_key, effective_languages, n_languages),
   by = c("state_name_harmonized", "district_key")
 )
 
 map_l2 <- left_join(
   districts_sf,
-  prepare_diversity(diversity_l2) |> select(state_name_harmonized, district_key, effective_languages),
+  prepare_diversity(diversity_l2) |> select(state_name_harmonized, district_key, effective_languages, n_languages),
   by = c("state_name_harmonized", "district_key")
 )
 ```
 
-## L1: Scheduled languages diversity
+## L1: Scheduled languages
 
-```{r plot-l1, fig.width=10, fig.height=12}
+### Diversity index (Shannon entropy)
+
+```{r plot-l1-diversity, fig.width=10, fig.height=12}
 plot_map(
   map_l1,
   fill_var = "effective_languages",
@@ -114,9 +116,25 @@ plot_map(
 )
 ```
 
-## L2: Dialect-level diversity
+### Number of languages spoken
 
-```{r plot-l2, fig.width=10, fig.height=12}
+```{r plot-l1-count, fig.width=10, fig.height=12}
+plot_map(
+  map_l1,
+  fill_var = "n_languages",
+  title = "Number of scheduled languages spoken (L1)",
+  subtitle = "Count of distinct scheduled languages per district",
+  legend_title = "Languages",
+  palette = "blues",
+  show_state_boundaries = TRUE
+)
+```
+
+## L2: Dialects
+
+### Diversity index (Shannon entropy)
+
+```{r plot-l2-diversity, fig.width=10, fig.height=12}
 plot_map(
   map_l2,
   fill_var = "effective_languages",
@@ -128,6 +146,20 @@ plot_map(
   trans = "log2",
   limits = c(1, 35),
   breaks = c(1, 2, 4, 8, 16, 32)
+)
+```
+
+### Number of dialects spoken
+
+```{r plot-l2-count, fig.width=10, fig.height=12}
+plot_map(
+  map_l2,
+  fill_var = "n_languages",
+  title = "Number of dialects spoken (L2)",
+  subtitle = "Count of distinct dialects per district",
+  legend_title = "Dialects",
+  palette = "blues",
+  show_state_boundaries = TRUE
 )
 ```
 
