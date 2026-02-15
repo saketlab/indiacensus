@@ -198,19 +198,22 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span></span>
 <span><span class="va">map_l1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
 <span>  <span class="va">districts_sf</span>,</span>
-<span>  <span class="fu">prepare_diversity</span><span class="op">(</span><span class="va">diversity_l1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">district_key</span>, <span class="va">effective_languages</span><span class="op">)</span>,</span>
+<span>  <span class="fu">prepare_diversity</span><span class="op">(</span><span class="va">diversity_l1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">district_key</span>, <span class="va">effective_languages</span>, <span class="va">n_languages</span><span class="op">)</span>,</span>
 <span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"state_name_harmonized"</span>, <span class="st">"district_key"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">map_l2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span></span>
 <span>  <span class="va">districts_sf</span>,</span>
-<span>  <span class="fu">prepare_diversity</span><span class="op">(</span><span class="va">diversity_l2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">district_key</span>, <span class="va">effective_languages</span><span class="op">)</span>,</span>
+<span>  <span class="fu">prepare_diversity</span><span class="op">(</span><span class="va">diversity_l2</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">state_name_harmonized</span>, <span class="va">district_key</span>, <span class="va">effective_languages</span>, <span class="va">n_languages</span><span class="op">)</span>,</span>
 <span>  by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"state_name_harmonized"</span>, <span class="st">"district_key"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="l1-scheduled-languages-diversity">L1: Scheduled languages diversity<a class="anchor" aria-label="anchor" href="#l1-scheduled-languages-diversity"></a>
+<h2 id="l1-scheduled-languages">L1: Scheduled languages<a class="anchor" aria-label="anchor" href="#l1-scheduled-languages"></a>
 </h2>
+<div class="section level3">
+<h3 id="diversity-index-shannon-entropy">Diversity index (Shannon entropy)<a class="anchor" aria-label="anchor" href="#diversity-index-shannon-entropy"></a>
+</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
 <span>  <span class="va">map_l1</span>,</span>
@@ -224,12 +227,31 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span>  limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">18</span><span class="op">)</span>,</span>
 <span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">16</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="linguistic-diversity_files/figure-html/plot-l1-1.png" class="r-plt" alt="" width="1500"></p>
+<p><img src="linguistic-diversity_files/figure-html/plot-l1-diversity-1.png" class="r-plt" alt="" width="1500"></p>
+</div>
+<div class="section level3">
+<h3 id="number-of-languages-spoken">Number of languages spoken<a class="anchor" aria-label="anchor" href="#number-of-languages-spoken"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
+<span>  <span class="va">map_l1</span>,</span>
+<span>  fill_var <span class="op">=</span> <span class="st">"n_languages"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Number of scheduled languages spoken (L1)"</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Count of distinct scheduled languages per district"</span>,</span>
+<span>  legend_title <span class="op">=</span> <span class="st">"Languages"</span>,</span>
+<span>  palette <span class="op">=</span> <span class="st">"blues"</span>,</span>
+<span>  show_state_boundaries <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="linguistic-diversity_files/figure-html/plot-l1-count-1.png" class="r-plt" alt="" width="1500"></p>
+</div>
 </div>
 <div class="section level2">
-<h2 id="l2-dialect-level-diversity">L2: Dialect-level diversity<a class="anchor" aria-label="anchor" href="#l2-dialect-level-diversity"></a>
+<h2 id="l2-dialects">L2: Dialects<a class="anchor" aria-label="anchor" href="#l2-dialects"></a>
 </h2>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="section level3">
+<h3 id="diversity-index-shannon-entropy-1">Diversity index (Shannon entropy)<a class="anchor" aria-label="anchor" href="#diversity-index-shannon-entropy-1"></a>
+</h3>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
 <span>  <span class="va">map_l2</span>,</span>
 <span>  fill_var <span class="op">=</span> <span class="st">"effective_languages"</span>,</span>
@@ -242,12 +264,28 @@ has diversity equivalent to four equally-spoken languages.</p>
 <span>  limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">35</span><span class="op">)</span>,</span>
 <span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">8</span>, <span class="fl">16</span>, <span class="fl">32</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="linguistic-diversity_files/figure-html/plot-l2-1.png" class="r-plt" alt="" width="1500"></p>
+<p><img src="linguistic-diversity_files/figure-html/plot-l2-diversity-1.png" class="r-plt" alt="" width="1500"></p>
+</div>
+<div class="section level3">
+<h3 id="number-of-dialects-spoken">Number of dialects spoken<a class="anchor" aria-label="anchor" href="#number-of-dialects-spoken"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_map.html">plot_map</a></span><span class="op">(</span></span>
+<span>  <span class="va">map_l2</span>,</span>
+<span>  fill_var <span class="op">=</span> <span class="st">"n_languages"</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Number of dialects spoken (L2)"</span>,</span>
+<span>  subtitle <span class="op">=</span> <span class="st">"Count of distinct dialects per district"</span>,</span>
+<span>  legend_title <span class="op">=</span> <span class="st">"Dialects"</span>,</span>
+<span>  palette <span class="op">=</span> <span class="st">"blues"</span>,</span>
+<span>  show_state_boundaries <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="linguistic-diversity_files/figure-html/plot-l2-count-1.png" class="r-plt" alt="" width="1500"></p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="most-diverse-districts">Most diverse districts<a class="anchor" aria-label="anchor" href="#most-diverse-districts"></a>
 </h2>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"Top 10 by scheduled languages (L1):\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Top 10 by scheduled languages (L1):</span></span>
 <span><span class="va">diversity_l1</span> <span class="op">|&gt;</span></span>

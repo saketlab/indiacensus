@@ -81,18 +81,20 @@ prepare_diversity <- function(div_data) {
 
 map_l1 <- left_join(
   districts_sf,
-  prepare_diversity(diversity_l1) |> select(state_name_harmonized, district_key, effective_languages),
+  prepare_diversity(diversity_l1) |> select(state_name_harmonized, district_key, effective_languages, n_languages),
   by = c("state_name_harmonized", "district_key")
 )
 
 map_l2 <- left_join(
   districts_sf,
-  prepare_diversity(diversity_l2) |> select(state_name_harmonized, district_key, effective_languages),
+  prepare_diversity(diversity_l2) |> select(state_name_harmonized, district_key, effective_languages, n_languages),
   by = c("state_name_harmonized", "district_key")
 )
 ```
 
-## L1: Scheduled languages diversity
+## L1: Scheduled languages
+
+### Diversity index (Shannon entropy)
 
 ``` r
 plot_map(
@@ -109,9 +111,27 @@ plot_map(
 )
 ```
 
-![](linguistic-diversity_files/figure-html/plot-l1-1.png)
+![](linguistic-diversity_files/figure-html/plot-l1-diversity-1.png)
 
-## L2: Dialect-level diversity
+### Number of languages spoken
+
+``` r
+plot_map(
+  map_l1,
+  fill_var = "n_languages",
+  title = "Number of scheduled languages spoken (L1)",
+  subtitle = "Count of distinct scheduled languages per district",
+  legend_title = "Languages",
+  palette = "blues",
+  show_state_boundaries = TRUE
+)
+```
+
+![](linguistic-diversity_files/figure-html/plot-l1-count-1.png)
+
+## L2: Dialects
+
+### Diversity index (Shannon entropy)
 
 ``` r
 plot_map(
@@ -128,7 +148,23 @@ plot_map(
 )
 ```
 
-![](linguistic-diversity_files/figure-html/plot-l2-1.png)
+![](linguistic-diversity_files/figure-html/plot-l2-diversity-1.png)
+
+### Number of dialects spoken
+
+``` r
+plot_map(
+  map_l2,
+  fill_var = "n_languages",
+  title = "Number of dialects spoken (L2)",
+  subtitle = "Count of distinct dialects per district",
+  legend_title = "Dialects",
+  palette = "blues",
+  show_state_boundaries = TRUE
+)
+```
+
+![](linguistic-diversity_files/figure-html/plot-l2-count-1.png)
 
 ## Most diverse districts
 
