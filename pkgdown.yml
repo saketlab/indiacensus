@@ -3,10 +3,12 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   linguistic-diversity: linguistic-diversity.html
+  population-dynamics: population-dynamics.html
   population-maps: population-maps.html
   sc-st-population: sc-st-population.html
   sex-ratio: sex-ratio.html
-last_built: 2026-02-15T02:49Z
+  social-composition: social-composition.html
+last_built: 2026-02-15T06:10Z
 urls:
   reference: https://saketlab.github.io/indiacensus/reference
   article: https://saketlab.github.io/indiacensus/articles
