@@ -120,7 +120,9 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://saketlab.github.io/indiacensus/">indiacensus</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/" class="external-link">ggrepel</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/" class="external-link">ggrepel</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/" class="external-link">biscale</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span></code></pre></div>
 <p>Scheduled Castes (SC) and Scheduled Tribes (ST) are constitutionally
 recognized groups in India. Their geographic distribution reflects
 historical settlement patterns and regional diversity.</p>
@@ -258,9 +260,40 @@ historical settlement patterns and regional diversity.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Arunachal Pradesh       64.2</span></span></code></pre></div>
 </div>
 <div class="section level2">
+<h2 id="bivariate-choropleth-sc-and-st-together">Bivariate choropleth: SC and ST together<a class="anchor" aria-label="anchor" href="#bivariate-choropleth-sc-and-st-together"></a>
+</h2>
+<p>This map uses a bivariate color scheme to show both SC and ST
+percentages simultaneously. The legend shows how colors combine: one
+axis represents SC concentration, the other ST concentration.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">boundaries</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_census_boundaries.html">get_census_boundaries</a></span><span class="op">(</span><span class="fl">2011</span>, <span class="st">"district"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">bivariate_data</span> <span class="op">&lt;-</span> <span class="va">sc_st_2011</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    sc_pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">sc_pct</span><span class="op">)</span>, <span class="fl">0</span>, <span class="va">sc_pct</span><span class="op">)</span>,</span>
+<span>    st_pct <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">st_pct</span><span class="op">)</span>, <span class="fl">0</span>, <span class="va">st_pct</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://chris-prener.github.io/biscale/reference/bi_class.html" class="external-link">bi_class</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sc_pct</span>, y <span class="op">=</span> <span class="va">st_pct</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">boundaries</span>, fill <span class="op">=</span> <span class="st">"grey85"</span>, color <span class="op">=</span> <span class="st">"grey70"</span>, linewidth <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">bivariate_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey50"</span>, linewidth <span class="op">=</span> <span class="fl">0.1</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://chris-prener.github.io/biscale/reference/bi_scale_fill.html" class="external-link">bi_scale_fill</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"BlueOr"</span>, dim <span class="op">=</span> <span class="fl">3</span>, na.value <span class="op">=</span> <span class="st">"grey85"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"SC and ST population distribution (2011)"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Bivariate choropleth showing joint distribution"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://chris-prener.github.io/biscale/reference/bi_theme.html" class="external-link">bi_theme</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://chris-prener.github.io/biscale/reference/bi_legend.html" class="external-link">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"BlueOr"</span>, dim <span class="op">=</span> <span class="fl">3</span>, xlab <span class="op">=</span> <span class="st">"SC % "</span>, ylab <span class="op">=</span> <span class="st">"ST % "</span>, size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">map</span> <span class="op">+</span> <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/inset_element.html" class="external-link">inset_element</a></span><span class="op">(</span><span class="va">legend</span>, left <span class="op">=</span> <span class="fl">0.7</span>, bottom <span class="op">=</span> <span class="fl">0.05</span>, right <span class="op">=</span> <span class="fl">0.95</span>, top <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span></code></pre></div>
+<p><img src="sc-st-population_files/figure-html/bivariate-map-1.png" class="r-plt" alt="" width="1500"></p>
+</div>
+<div class="section level2">
 <h2 id="sc-vs-st-scatter-plot">SC vs ST scatter plot<a class="anchor" aria-label="anchor" href="#sc-vs-st-scatter-plot"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">scatter_data</span> <span class="op">&lt;-</span> <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html" class="external-link">st_drop_geometry</a></span><span class="op">(</span><span class="va">sc_st_2011</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    is_extreme <span class="op">=</span> <span class="va">sc_pct</span> <span class="op">&gt;</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">sc_pct</span>, <span class="fl">0.95</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|</span></span>

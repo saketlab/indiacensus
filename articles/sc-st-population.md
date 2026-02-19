@@ -5,6 +5,8 @@ library(indiacensus)
 library(dplyr)
 library(ggplot2)
 library(ggrepel)
+library(biscale)
+library(patchwork)
 ```
 
 Scheduled Castes (SC) and Scheduled Tribes (ST) are constitutionally
@@ -145,6 +147,39 @@ state_summary |>
 #> 4 Meghalaya               85.9
 #> 5 Arunachal Pradesh       64.2
 ```
+
+## Bivariate choropleth: SC and ST together
+
+This map uses a bivariate color scheme to show both SC and ST
+percentages simultaneously. The legend shows how colors combine: one
+axis represents SC concentration, the other ST concentration.
+
+``` r
+boundaries <- get_census_boundaries(2011, "district")
+
+bivariate_data <- sc_st_2011 |>
+  mutate(
+    sc_pct = ifelse(is.na(sc_pct), 0, sc_pct),
+    st_pct = ifelse(is.na(st_pct), 0, st_pct)
+  ) |>
+  bi_class(x = sc_pct, y = st_pct, style = "quantile", dim = 3)
+
+map <- ggplot() +
+  geom_sf(data = boundaries, fill = "grey85", color = "grey70", linewidth = 0.05) +
+  geom_sf(data = bivariate_data, aes(fill = bi_class), color = "grey50", linewidth = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "BlueOr", dim = 3, na.value = "grey85") +
+  labs(
+    title = "SC and ST population distribution (2011)",
+    subtitle = "Bivariate choropleth showing joint distribution"
+  ) +
+  bi_theme()
+
+legend <- bi_legend(pal = "BlueOr", dim = 3, xlab = "SC % ", ylab = "ST % ", size = 8)
+
+map + inset_element(legend, left = 0.7, bottom = 0.05, right = 0.95, top = 0.3)
+```
+
+![](sc-st-population_files/figure-html/bivariate-map-1.png)
 
 ## SC vs ST scatter plot
 
