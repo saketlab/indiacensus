@@ -22,6 +22,7 @@ Imports:
     stringr,
     tibble
 Suggests:
+    biscale,
     ggplot2,
     gganimate,
     ggrepel,
